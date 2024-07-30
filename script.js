@@ -1,5 +1,20 @@
 let targetNumber;
 let guessesLeft = 5;
+let gameMode;
+
+function selectMode(mode) {
+    gameMode = mode;
+    if (mode === 'ai') {
+        targetNumber = Math.floor(Math.random() * 100) + 1;
+        document.getElementById('start-game').style.display = 'none';
+        document.getElementById('guess-game').style.display = 'block';
+        document.getElementById('message').textContent = `Guess the AI's number between 1 and 100. You have ${guessesLeft} guesses left.`;
+    } else {
+        document.getElementById('mode-selection').style.display = 'none';
+        document.getElementById('start-game').style.display = 'block';
+        document.getElementById('message').textContent = 'Friend, enter a number for the other player to guess.';
+    }
+}
 
 function startGame() {
     const numberInput = document.getElementById('number-input').value;
@@ -10,7 +25,7 @@ function startGame() {
     
     targetNumber = parseInt(numberInput, 10);
     guessesLeft = 5;
-    
+
     document.getElementById('start-game').style.display = 'none';
     document.getElementById('guess-game').style.display = 'block';
     document.getElementById('play-again').style.display = 'none';
@@ -42,10 +57,11 @@ function makeGuess() {
 }
 
 function restartGame() {
-    document.getElementById('start-game').style.display = 'block';
+    document.getElementById('mode-selection').style.display = 'block';
+    document.getElementById('start-game').style.display = 'none';
     document.getElementById('guess-game').style.display = 'none';
     document.getElementById('play-again').style.display = 'none';
     document.getElementById('number-input').value = '';
     document.getElementById('guess-input').value = '';
-    document.getElementById('message').textContent = 'Select a number and start guessing!';
+    document.getElementById('message').textContent = 'Choose a game mode to start!';
 }
