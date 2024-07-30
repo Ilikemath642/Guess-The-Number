@@ -10,8 +10,12 @@
     <div class="container">
         <h1>Guess the Number</h1>
         <div id="game">
-            <p id="message">Select a number and start guessing!</p>
-            <div id="start-game">
+            <p id="message">Choose a game mode to start!</p>
+            <div id="mode-selection">
+                <button onclick="selectMode('ai')">Guess AI's Number</button>
+                <button onclick="selectMode('friend')">Guess Friend's Number</button>
+            </div>
+            <div id="start-game" style="display:none;">
                 <input type="number" id="number-input" placeholder="Enter a number" />
                 <button onclick="startGame()">Start Game</button>
             </div>
